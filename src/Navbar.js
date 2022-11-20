@@ -45,17 +45,32 @@ return (
 </Flex> 
 
     {/*Rightside */}
-  <div>About</div>
-  <div>Mint</div>
-  <div>Team</div>
+ <Flex justify="space-around" align="center" width="40%" padding="30px">
 
+<Box margin="0 15px">About</Box>
+<Box margin="0 15px">Mint</Box>
+<Box margin="0 15px">Team</Box>
+
+ 
 
    {/*connect wallet */}
-   {isConnected ? (<p>Connected</p> ) : 
-   (<button onClick={connectAccount}>connect</button>
+   {isConnected ? (
+   <Box margin="0 15px">Connected</Box> ) : 
+   (<Button
+    backgroundColor="#06517D"
+    borderRadius="5px"
+    boxShadow="0px 2px 1px #0F0F0F"
+    color="white"
+    cursor="pointer"
+    fontFamily="inherit"
+    padding="15px"
+    margin="0 15px"
+    onClick={connectAccount}>connect</Button>
    )}
   
-  
+
+ </Flex>
+ 
   </div> 
 
   </Flex>

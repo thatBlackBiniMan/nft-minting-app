@@ -1,6 +1,9 @@
 import { useState } from "react";
 import {ethers, BigNumber } from 'ethers';
 //import guePunksNFT from './GuePunksNFT.json';
+import { Box, Button, Flex, Input, Text } from "@chakra-ui/react";
+
+
 
 const guePunksNFTAddress = ""; // contract address
 
@@ -39,8 +42,10 @@ const handleIncrement = ()=>{
 };
 
 return(
-  <div>
-    <h1>GuePunks</h1>
+  <Flex justify="center" align="center" height="100vh" paddingBottom="150px">
+    <Box width="520px">
+    <div>
+    <Text fontSize="48px" textShadow="0 5px #00000">GuePunks</Text>
     <p>Welcome to Tomorrow, I already exist tomorrow, come explore</p>
     {isConnected ? (
       <div>
@@ -54,7 +59,10 @@ return(
     ): (
       <p>Must Connect Wallet to Mint.</p>
     )}
-  </div>
+ </div>
+    </Box>    
+  </Flex>
+
 );
 
 
