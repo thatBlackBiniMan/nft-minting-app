@@ -5,7 +5,7 @@ import {ethers, BigNumber } from 'ethers';
 const guePunksNFTAddress = ""; // contract address
 
 const MainMint = ({accounts, setAccounts}) => {
-  const [minAmount, setMintAmoumt] = useState(1);
+  const [mintAmount, setMintAmoumt] = useState(1);
   const isConnected = Boolean(accounts[0]);
 
 async function handleMint (){
@@ -18,7 +18,7 @@ async function handleMint (){
       signer
     );
   try {
-   const response = await contract.mint(BigNumber.from (minAmount));
+   const response = await contract.mint(BigNumber.from (mintAmount));
    console.log('response');
   } catch(err){
     console.log("error", err)
@@ -28,22 +28,36 @@ async function handleMint (){
 }
 
 const handleDecrement = ()=>{
-  if (minAmount <= 1) return;
-  setMintAmoumt(minAmount - 1);
+  if (mintAmount <= 1) return;
+  setMintAmoumt(mintAmount - 1);
 };
 
 
 const handleIncrement = ()=>{
-  if (minAmount >= 3) return;
-  setMintAmoumt(minAmount + 1);
+  if (mintAmount >= 3) return;
+  setMintAmoumt(mintAmount + 1);
 };
 
 return(
   <div>
     <h1>GuePunks</h1>
-    <p></p>
+    <p>Welcome to Tomorrow, I already exist tomorrow, come explore</p>
+    {isConnected ? (
+      <div>
+        <div>
+        <button onClick={handleDecrement}>-</button>
+        <input type="number" value={mintAmount}/>
+        <button onClick={handleIncrement}>+</button>
+        </div>
+        <button onClick={handleMint}>Mint Now</button>
+        </div>
+    ): (
+      <p>Must Connect Wallet to Mint.</p>
+    )}
   </div>
-)
+);
 
 
-}
+};
+
+export default MainMint;
